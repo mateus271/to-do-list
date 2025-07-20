@@ -14,7 +14,6 @@ export class TodoListService {
         { id: 1, name: 'Fazer exercícios físicos', isDone: true },
         { id: 2, name: 'Preparar o almoço', isDone: false },
         { id: 3, name: 'Responder e-mails', isDone: true }
-
       ]
     },
     {
@@ -41,5 +40,15 @@ export class TodoListService {
 
   public returnSelectedTodoListById(todoListId: number): TodoList | undefined {
     return this.todoListsArray.find(todoList => todoList.id === todoListId);
+  }
+
+  public deleteTask(todoListId: number, taskId: number): void {
+    const todoListIndex = this.todoListsArray.findIndex(todoList => todoList.id === todoListId);
+    const taskIndex = this.todoListsArray[todoListIndex]?.tasksArray.findIndex(task => task.id === taskId);
+
+    if (taskIndex !== undefined) {
+      this.todoListsArray[todoListIndex]?.tasksArray.splice(taskIndex, 1);
+      console.log("lista de listas de tarefas", this.todoListsArray);
+    }
   }
 }

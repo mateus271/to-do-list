@@ -1,3 +1,7 @@
 <div class="task-container" *ngIf="taskItem">
-  <p> {{ taskItem.name }} </p>
+  <mat-checkbox [checked]="taskItem.isDone" (change)="toggleTaskCompletion(taskItem.id)"></mat-checkbox>
+  <p [ngClass]="taskItem.isDone ? 'completed-task' : ''"> {{ taskItem.name }} </p>
+  <button mat-fab color="primary" aria-label="Botão de exclusão" (click)="deleteTask(taskItem.id)">
+    <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+  </button>
 </div>

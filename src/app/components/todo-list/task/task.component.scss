@@ -2,8 +2,18 @@
   background-color: white;
   width: 100%;
   display: flex;
-  padding: 6px 18px;
   font-size: 25px;
   border-radius: 6px;
   padding: 12px 18px;
+  align-items: center;
+  gap: 12px;
+
+  p.completed-task {
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  button {
+    margin-left: auto;
+  }
 }

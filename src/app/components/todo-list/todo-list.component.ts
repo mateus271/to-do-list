@@ -29,4 +29,21 @@ export class TodoListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.selectedTodoListIdSubscription.unsubscribe();
   }
+
+  public deleteTask(taskId: number): void {
+    if (this.todoListSelected) {
+      this.todoListService.deleteTask(this.todoListSelected?.id, taskId);
+    }
+  }
+
+  public toggleTaskCompletion(taskId: number): void {
+    if (!this.todoListSelected) return;
+
+    const taskIndex = this.todoListSelected.tasksArray.findIndex(task => task.id === taskId);
+
+    if (taskIndex >= 0) {
+      const task = this.todoListSelected.tasksArray[taskIndex];
+      task.isDone = !task.isDone;
+    }
+  }
 }

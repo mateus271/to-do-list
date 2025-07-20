@@ -13,13 +13,29 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    display: flex;
     gap: 14px;
 
     app-task {
       width: 100%;
       display: flex;
     }
+  }
+
+  .no-tasks-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    padding: 0 120px;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+
+  button {
+    margin-top: auto;
+    width: 95%;
+    align-self: center;
   }
 }
 

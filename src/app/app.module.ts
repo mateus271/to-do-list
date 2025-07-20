@@ -7,6 +7,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TaskComponent } from './components/todo-list/task/task.component';
 import { MatIconModule } from '@angular/material/icon'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,11 @@ import { MatIconModule } from '@angular/material/icon'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration()
