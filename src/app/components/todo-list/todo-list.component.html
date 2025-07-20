@@ -1,0 +1,14 @@
+<div class="todo-list-container">
+  <div *ngIf="todoListSelected">
+    <h1>{{ todoListSelected.listName }}</h1>
+    <app-task *ngFor="let task of todoListSelected.tasksArray" [taskItem]="task"></app-task>
+  </div>
+
+  <div *ngIf="!todoListSelected && !showErrorMessage">
+    <p>Por favor, selecione uma lista de tarefas do menu lateral para começar a gerenciar suas tarefas!</p>
+  </div>
+
+  <div *ngIf="!todoListSelected && showErrorMessage">
+    <p>Aconteceu um problema ao exibir o item selecionado. Por favor recarregue a página e tente de novo!</p>
+  </div>
+</div>

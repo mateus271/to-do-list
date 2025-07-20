@@ -1,0 +1,7 @@
+<div class="sidebar-container">
+  <div *ngIf="todoListsArray.length > 0">
+    <div *ngFor="let todoList of todoListsArray">
+      <p (click)="selectTodoList(todoList.id)">{{ todoList.listName }}</p>
+    </div>
+  </div>
+</div>
