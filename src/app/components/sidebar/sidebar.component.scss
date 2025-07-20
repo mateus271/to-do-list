@@ -1,0 +1,25 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 30px;
+
+  .todo-list {
+    border-radius: 4px;
+    padding: 6px;
+    width: 95%;
+
+    :hover {
+      background-color: f4f4f4;
+    }
+  }
+
+  .todo-list.selected {
+    border-left: solid 5px #2567a5;
+    background-color: #eaeaea;
+
+    :hover {
+      background-color: #eaeaea;
+    }
+  }
+}

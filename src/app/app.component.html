@@ -1,7 +1,17 @@
-<h1>Lista de Tarefas</h1>
-<app-sidebar
-  [todoListsArray]="todoListsArray"
-  (todoListSelected)="changeSelectedList($event)">
-</app-sidebar>
+<div class="app-container">
+  <div class="sidebar-container">
+    <h1>Lista de Tarefas</h1>
 
-<app-todo-list></app-todo-list>
+    <app-sidebar
+      [todoListsArray]="todoListsArray"
+      (todoListSelected)="changeSelectedList($event)">
+    </app-sidebar>
+
+    <div class="add-list-container">
+      <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+      Adicionar nova lista
+    </div>
+  </div>
+
+  <app-todo-list></app-todo-list>
+</div>

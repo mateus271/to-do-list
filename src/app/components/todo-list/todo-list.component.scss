@@ -1,0 +1,35 @@
+.todo-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  height: 100%;
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .tasks-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    gap: 14px;
+
+    app-task {
+      width: 100%;
+      display: flex;
+    }
+  }
+}
+
+.no-list-selected-or-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 40px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}

@@ -1,7 +1,9 @@
-<div class="sidebar-container">
-  <div *ngIf="todoListsArray.length > 0">
-    <div *ngFor="let todoList of todoListsArray">
-      <p (click)="selectTodoList(todoList.id)">{{ todoList.listName }}</p>
-    </div>
+<div class="sidebar-container" *ngIf="todoListsArray.length > 0">
+  <div class="todo-list" [ngClass]="currentlySelectedList === todoList.id ? 'selected' : ''" *ngFor="let todoList of todoListsArray">
+    <p (click)="selectTodoList(todoList.id)">{{ todoList.listName }}</p>
   </div>
+</div>
+
+<div *ngIf="todoListsArray.length === 0">
+  <p> Não há nenhuma lista de tarefas para exibir. Que tal criar uma nova, usando o botão abaixo? </p>
 </div>

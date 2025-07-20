@@ -7,6 +7,8 @@ import { TodoList } from '../../shared/interfaces/todo-list.interface';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  public currentlySelectedList: number = 0;
+
   @Input()
   public todoListsArray: TodoList[] = [];
 
@@ -15,5 +17,6 @@ export class SidebarComponent {
 
   public selectTodoList(todoListId: number): void {
     this.todoListSelected.emit(todoListId);
+    this.currentlySelectedList = todoListId;
   }
 }

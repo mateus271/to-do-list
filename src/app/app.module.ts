@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TaskComponent } from './components/todo-list/task/task.component';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TaskComponent } from './components/todo-list/task/task.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule
   ],
   providers: [
     provideClientHydration()
