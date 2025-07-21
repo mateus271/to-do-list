@@ -10,21 +10,31 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateItemModalComponent } from './components/create-item-modal/create-item-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     TodoListComponent,
-    TaskComponent
+    TaskComponent,
+    CreateItemModalComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     MatIconModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     provideClientHydration()

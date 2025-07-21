@@ -1,0 +1,25 @@
+<div class="add-todo-list-container" >
+  <div class="modal-header">
+    <h1>
+      Adicione uma nova
+      <span *ngIf="data.isList">lista</span>
+      <span *ngIf="!data.isList">tarefa</span>
+    </h1>
+
+    <button mat-fab color="primary" aria-label="Close modal button" (click)="closeDialog()">
+      <mat-icon fontSet="material-icons-outlined">close</mat-icon>
+    </button>
+  </div>
+
+  <mat-form-field *ngIf="data.isList">
+    <mat-label>Nome da nova lista</mat-label>
+    <input type="text" matInput [(ngModel)]="newTodoList.listName">
+  </mat-form-field>
+
+  <mat-form-field *ngIf="!data.isList">
+    <mat-label>Nome da nova tarefa</mat-label>
+    <input type="text" matInput [(ngModel)]="newTask.name">
+  </mat-form-field>
+
+  <button mat-flat-button (click)="save()">Salvar</button>
+</div>

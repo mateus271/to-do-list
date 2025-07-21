@@ -7,7 +7,7 @@
       (todoListSelected)="changeSelectedList($event)">
     </app-sidebar>
 
-    <button mat-fab extended>
+    <button mat-fab extended (click)="addNewList()">
       <mat-icon fontSet="material-icons-outlined">add</mat-icon>
       Adicionar nova lista
     </button>

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { TodoList } from "../interfaces/todo-list.interface";
 import { Observable, Subject } from "rxjs";
+import { Task } from "../interfaces/task.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,10 @@ export class TodoListService {
       tasksArray: [
         { id: 1, name: 'Fazer exercícios físicos', isDone: true },
         { id: 2, name: 'Preparar o almoço', isDone: false },
-        { id: 3, name: 'Responder e-mails', isDone: true }
-      ]
+        { id: 3, name: 'Responder e-mails', isDone: true },
+        { id: 4, name: 'Agendar consulta médica', isDone: false },
+      ],
+      lastTaskId: 4,
     },
     {
       id: 2,
@@ -22,19 +25,22 @@ export class TodoListService {
       tasksArray: [
         { id: 1, name: 'Comprar leite', isDone: false },
         { id: 2, name: 'Lavar o carro', isDone: true }
-      ]
+      ],
+      lastTaskId: 2,
     },
     {
       id: 3,
       listName: 'Trabalho/Estudos',
       tasksArray: [
         { id: 1, name: 'Organizar documentos', isDone: false },
-        { id: 2, name: 'Agendar consulta médica', isDone: false },
-        { id: 3, name: 'Assistir aula gravada', isDone: true },
-        { id: 4, name: 'Estudar Angular', isDone: false }
-      ]
+        { id: 2, name: 'Assistir aula gravada', isDone: true },
+        { id: 3, name: 'Estudar Angular', isDone: false }
+      ],
+      lastTaskId: 3
     }
   ];
+
+  public todoListsLastId: number = 3;
 
   public selectedTodoListId$: Subject<number> = new Subject<number>();
 
@@ -48,7 +54,15 @@ export class TodoListService {
 
     if (taskIndex !== undefined) {
       this.todoListsArray[todoListIndex]?.tasksArray.splice(taskIndex, 1);
-      console.log("lista de listas de tarefas", this.todoListsArray);
     }
+  }
+
+  public addTaskToList(listId: number, task: Task): void {
+    const parentListIndex = this.todoListsArray.findIndex(list => list.id === listId);
+    this.todoListsArray[parentListIndex].tasksArray.push(task);
+  }
+
+  public addListToArray(todoList: TodoList): void {
+    this.todoListsArray.push(todoList);
   }
 }

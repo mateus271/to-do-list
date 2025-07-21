@@ -2,6 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TodoListService } from '../../shared/services/todo-list.service';
 import { Subscription } from 'rxjs';
 import { TodoList } from '../../shared/interfaces/todo-list.interface';
+import { CreateItemModalComponent } from '../create-item-modal/create-item-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,7 +16,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   private selectedTodoListIdSubscription: Subscription = new Subscription();
 
-  constructor(private todoListService: TodoListService) {}
+  constructor(private todoListService: TodoListService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.selectedTodoListIdSubscription = this.todoListService.selectedTodoListId$.subscribe((todoListId) => {
@@ -45,5 +47,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
       const task = this.todoListSelected.tasksArray[taskIndex];
       task.isDone = !task.isDone;
     }
+  }
+
+  public addNewTask(): void {
+    const dialogRef = this.dialog.open(CreateItemModalComponent, {
+      data: { isList: false, listId: this.todoListSelected?.id },
+      width: '500px',
+      height: '500px'
+    });
   }
 }

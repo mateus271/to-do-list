@@ -14,7 +14,7 @@
       <p>Não há tarefas nessa lista. Que tal cadastrar algumas, clicando no botão abaixo?</p>
     </div>
 
-    <button mat-fab extended>
+    <button mat-fab extended (click)="addNewTask()">
       <mat-icon fontSet="material-icons-outlined">add</mat-icon>
       Adicionar nova tarefa
     </button>
