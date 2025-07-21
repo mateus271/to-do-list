@@ -15,4 +15,9 @@
     background-color: cornflowerblue;
     color: white;
   }
+
+  button.mat-mdc-button-disabled {
+    background-color: gray;
+    color: black;
+  }
 }

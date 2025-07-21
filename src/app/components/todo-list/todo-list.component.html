@@ -1,23 +1,28 @@
 <div class="todo-list-container" *ngIf="todoListSelected">
+  <div class="todo-list-header">
     <h1>{{ todoListSelected.listName }}</h1>
-
-    <div class="tasks-container" *ngIf="todoListSelected.tasksArray.length > 0">
-      <app-task
-        *ngFor="let task of todoListSelected.tasksArray"
-        [taskItem]="task"
-        (taskDeleted)="deleteTask($event)"
-        (taskCompletion)="toggleTaskCompletion($event)">
-      </app-task>
-    </div>
-
-    <div class="no-tasks-container" *ngIf="todoListSelected.tasksArray.length === 0">
-      <p>Não há tarefas nessa lista. Que tal cadastrar algumas, clicando no botão abaixo?</p>
-    </div>
-
-    <button mat-fab extended (click)="addNewTask()">
-      <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-      Adicionar nova tarefa
+    <button mat-fab color="primary" aria-label="Close modal button" (click)="deleteList()">
+      <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
     </button>
+  </div>
+
+  <div class="tasks-container" *ngIf="todoListSelected.tasksArray.length > 0">
+    <app-task
+      *ngFor="let task of todoListSelected.tasksArray"
+      [taskItem]="task"
+      (taskDeleted)="deleteTask($event)"
+      (taskCompletion)="toggleTaskCompletion($event)">
+    </app-task>
+  </div>
+
+  <div class="no-tasks-container" *ngIf="todoListSelected.tasksArray.length === 0">
+    <p>Não há tarefas nessa lista. Que tal cadastrar algumas, clicando no botão abaixo?</p>
+  </div>
+
+  <button class="add-new-task-button" mat-fab extended (click)="addNewTask()">
+    <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+    Adicionar nova tarefa
+  </button>
 </div>
 
 <div class="no-list-selected-or-error" *ngIf="!todoListSelected && !showErrorMessage">

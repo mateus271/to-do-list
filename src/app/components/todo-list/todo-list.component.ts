@@ -23,7 +23,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
       this.todoListSelected = this.todoListService.returnSelectedTodoListById(todoListId);
 
       if (!this.todoListSelected) {
-        this.showErrorMessage = true;
+        this.todoListSelected = undefined;
       }
     });
   }
@@ -55,5 +55,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
       width: '500px',
       height: '500px'
     });
+  }
+
+  public deleteList(): void {
+    if (this.todoListSelected) {
+      this.todoListService.deleteList(this.todoListSelected?.id);
+    }
+
+    this.todoListSelected = undefined;
+    this.todoListService.selectedTodoListId$.next(-1);
   }
 }

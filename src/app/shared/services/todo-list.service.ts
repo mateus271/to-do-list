@@ -57,6 +57,11 @@ export class TodoListService {
     }
   }
 
+  public deleteList(todoListId: number): void {
+    const selectedListIndex = this.todoListsArray.findIndex(todoList => todoList.id === todoListId);
+    this.todoListsArray.splice(selectedListIndex, 1);
+  }
+
   public addTaskToList(listId: number, task: Task): void {
     const parentListIndex = this.todoListsArray.findIndex(list => list.id === listId);
     this.todoListsArray[parentListIndex].tasksArray.push(task);

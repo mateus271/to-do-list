@@ -10,8 +10,8 @@ import { TodoListService } from '../../shared/services/todo-list.service';
   styleUrl: './create-item-modal.component.scss'
 })
 export class CreateItemModalComponent {
-  public newTodoList: TodoList = {} as TodoList;
-  public newTask: Task = {} as Task;
+  public newTodoList: TodoList = { listName: "" } as TodoList;
+  public newTask: Task = { name: "" } as Task;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
