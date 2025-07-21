@@ -6,6 +6,11 @@
     </button>
   </div>
 
+  <div class="todo-list-subheader">
+    <p>Total de tarefas: {{ todoListSelected.tasksArray.length }}</p>
+    <p>Tarefas concluídas: {{ doneTasksCount }}</p>
+  </div>
+
   <div class="tasks-container" *ngIf="todoListSelected.tasksArray.length > 0">
     <app-task
       *ngFor="let task of todoListSelected.tasksArray"

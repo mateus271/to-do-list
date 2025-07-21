@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   public addNewList(): void {
-    const dialogRef = this.dialog.open(CreateItemModalComponent, {
+    this.dialog.open(CreateItemModalComponent, {
       data: { isList: true },
       width: '500px',
       height: '500px'

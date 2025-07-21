@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { TodoList } from '../../shared/interfaces/todo-list.interface';
 import { CreateItemModalComponent } from '../create-item-modal/create-item-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Task } from '../../shared/interfaces/task.interface';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class TodoListComponent implements OnInit, OnDestroy {
   public todoListSelected: TodoList | undefined;
   public showErrorMessage: boolean = false;
+  public doneTasksCount: number = 0;
 
   private selectedTodoListIdSubscription: Subscription = new Subscription();
 
@@ -20,9 +22,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.selectedTodoListIdSubscription = this.todoListService.selectedTodoListId$.subscribe((todoListId) => {
-      this.todoListSelected = this.todoListService.returnSelectedTodoListById(todoListId);
+      const selected = this.todoListService.returnSelectedTodoListById(todoListId);
 
-      if (!this.todoListSelected) {
+      if (selected) {
+        selected.tasksArray = this.sortTasksArray(selected.tasksArray);
+        this.todoListSelected = selected;
+        this.doneTasksCount = this.getDoneTasksCount();
+      } else {
         this.todoListSelected = undefined;
       }
     });
@@ -47,10 +53,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
       const task = this.todoListSelected.tasksArray[taskIndex];
       task.isDone = !task.isDone;
     }
+
+    this.todoListSelected.tasksArray = this.sortTasksArray(this.todoListSelected.tasksArray);
+    this.doneTasksCount = this.getDoneTasksCount();
   }
 
   public addNewTask(): void {
-    const dialogRef = this.dialog.open(CreateItemModalComponent, {
+    this.dialog.open(CreateItemModalComponent, {
       data: { isList: false, listId: this.todoListSelected?.id },
       width: '500px',
       height: '500px'
@@ -64,5 +73,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
     this.todoListSelected = undefined;
     this.todoListService.selectedTodoListId$.next(-1);
+  }
+
+  private sortTasksArray(tasksArray: Task[]): Task[] {
+    return tasksArray.sort((a, b) => Number(a.isDone) - Number(b.isDone)) || [];
+  }
+
+  private getDoneTasksCount(): number {
+    return this.todoListSelected?.tasksArray.filter(task => task.isDone).length || 0;
   }
 }
