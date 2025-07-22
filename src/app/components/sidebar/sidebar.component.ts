@@ -16,7 +16,12 @@ export class SidebarComponent {
   public todoListSelected: EventEmitter<number> = new EventEmitter<number>();
 
   public selectTodoList(todoListId: number): void {
-    this.todoListSelected.emit(todoListId);
-    this.currentlySelectedList = todoListId;
+    if (this.currentlySelectedList === todoListId) {
+      this.todoListSelected.emit(0);
+      this.currentlySelectedList = 0;
+    } else {
+      this.todoListSelected.emit(todoListId);
+      this.currentlySelectedList = todoListId;
+    }
   }
 }
