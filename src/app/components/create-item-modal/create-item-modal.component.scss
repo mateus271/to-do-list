@@ -12,12 +12,12 @@
   }
 
   button {
-    background-color: cornflowerblue;
-    color: white;
+    background-color: var(to-do-list-accent);
+    color: black;
   }
 
   button.mat-mdc-button-disabled {
     background-color: gray;
-    color: black;
+    color: white;
   }
 }

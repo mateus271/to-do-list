@@ -8,6 +8,7 @@
     border-radius: 4px;
     padding: 6px;
     width: 95%;
+    border-left: solid 5px white;
 
     :hover {
       background-color: f4f4f4;
@@ -15,7 +16,7 @@
   }
 
   .todo-list.selected {
-    border-left: solid 5px #2567a5;
+    border-left: solid 5px #EB7700;
     background-color: #eaeaea;
 
     :hover {
